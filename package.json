@@ -1,22 +1,22 @@
 {
   "name": "bitbucket-server-nodejs",
-  "description": "Provides access to some of Bitbucket-Server's APIs.",
+  "description": "Provides access to some of Bitbucket Cloud's APIs.",
   "tags": [
-    "bitbucket-server",
+    "bitbucket-cloud",
     "bitbucket",
-    "stash",
     "atlassian",
     "rest",
     "api"
   ],
+  "private": true,
   "version": "2.11.3",
-  "author": "Mark Massoud <npm@markmssd.com>",
+  "author": "Mark Massoud <npm@markmssd.com>, Eduardo Aleixo <eduardo@translucentcomputing.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markmssd/bitbucket-server-nodejs.git"
+    "url": "https://github.com/eh-am/bitbucket-cloud-nodejs.git"
   },
   "bugs": {
-    "url": "https://github.com/markmssd/bitbucket-server-nodejs/issues"
+    "url": "https://github.com/eh-am/bitbucket-cloud-nodejs/issues"
   },
   "license": "MIT",
   "engines": {

@@ -9,7 +9,7 @@ describe('Users', function () {
   var auth = require('../mocks/auth');
 
   beforeEach(function () {
-    bitbucketClient = new BitbucketClient('http://localhost/', auth);
+    bitbucketClient = new BitbucketClient('https://api.bitbucket.org/2.0/', auth);
     requestGet = sinon.stub(request, 'get');
   });
 
@@ -28,7 +28,7 @@ describe('Users', function () {
       .then(function (users) {
         assert.equal(users.size, 1);
         assert.deepEqual(users.values[ 0 ], expected.values[ 0 ]);
-        assert.equal(requestGet.getCall(0).args[ 0 ].uri, 'http://localhost/users?limit=1000');
+        assert.equal(requestGet.getCall(0).args[ 0 ].uri, 'https://api.bitbucket.org/2.0/users?limit=1000');
 
         done();
       });
@@ -42,7 +42,7 @@ describe('Users', function () {
     bitbucketClient.users.getUser('user-slug')
       .then(function (user) {
         assert.deepEqual(user, expected);
-        assert.equal(requestGet.getCall(0).args[ 0 ].uri, 'http://localhost/users/user-slug');
+        assert.equal(requestGet.getCall(0).args[ 0 ].uri, 'https://api.bitbucket.org/2.0/users/user-slug');
 
         done();
       });

@@ -6,7 +6,7 @@ var Promise = require('bluebird');
 var _ = require('lodash');
 
 describe('Client', function () {
-  var baseUrl = 'http://localhost/';
+  var baseUrl = 'https://api.bitbucket.org/2.0/';
   var auth = require('./mocks/auth');
   var oauth = require('./mocks/oauth');
   var repos = require('./mocks/repos');
@@ -20,17 +20,17 @@ describe('Client', function () {
   });
 
   it('should add missing slash at end only if it\'s missing', function (done) {
-    var client = new BitbucketClient('http://localhost', auth);
-    assert.equal(client.baseUrl, 'http://localhost/');
+    var client = new BitbucketClient('https://api.bitbucket.org/2.0/', auth);
+    assert.equal(client.baseUrl, 'https://api.bitbucket.org/2.0//');
 
-    client = new BitbucketClient('http://localhost/', auth);
-    assert.equal(client.baseUrl, 'http://localhost/');
+    client = new BitbucketClient('https://api.bitbucket.org/2.0//', auth);
+    assert.equal(client.baseUrl, 'https://api.bitbucket.org/2.0//');
 
     done();
   });
 
   it('should ignore all other auth fields if auth.type === public', function (done) {
-    var client = new BitbucketClient('http://localhost', {
+    var client = new BitbucketClient('https://api.bitbucket.org/2.0/', {
       type: 'public',
       username: 'username',
       password: 'password'
@@ -175,7 +175,7 @@ describe('Client', function () {
       client.get('repos')
         .then(function () {
           assert.equal(requestGet.getCall(0).args[ 0 ].uri,
-            'http://localhost/repos');
+            'https://api.bitbucket.org/2.0/repos');
 
           assert.equal(requestGet.getCall(0).args[ 0 ].auth,
             auth);
@@ -191,7 +191,7 @@ describe('Client', function () {
       client.get('repos')
         .then(function () {
           assert.equal(requestGet.getCall(0).args[ 0 ].uri,
-            'http://localhost/repos');
+            'https://api.bitbucket.org/2.0/repos');
 
           assert.equal(requestGet.getCall(0).args[ 0 ].oauth,
             oauth);
@@ -219,7 +219,7 @@ describe('Client', function () {
       client.put('repos')
         .then(function () {
           assert.equal(requestPost.getCall(0).args[ 0 ].uri,
-            'http://localhost/repos');
+            'https://api.bitbucket.org/2.0/repos');
 
           assert.equal(requestPost.getCall(0).args[ 0 ].auth,
             auth);
@@ -234,7 +234,7 @@ describe('Client', function () {
       bitbucketClient2.put('repos')
         .then(function () {
           assert.equal(requestPost.getCall(0).args[ 0 ].uri,
-            'http://localhost/repos');
+            'https://api.bitbucket.org/2.0/repos');
 
           assert.equal(requestPost.getCall(0).args[ 0 ].oauth,
             oauth);
